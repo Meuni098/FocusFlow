@@ -28,8 +28,10 @@ function getItem(key) {
 function setItem(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
+    return true;
   } catch (e) {
     console.error('Storage error:', e);
+    return false;
   }
 }
 
@@ -162,7 +164,7 @@ export function addTransaction(txnData) {
 
 // — Files —
 export function getFiles() { return getItem(KEYS.files) || []; }
-export function saveFiles(files) { setItem(KEYS.files, files); }
+export function saveFiles(files) { return setItem(KEYS.files, files); }
 
 export function addFile(fileData) {
   const files = getFiles();
@@ -174,12 +176,14 @@ export function addFile(fileData) {
     folderId: fileData.folderId || null,
     tags: fileData.tags || [],
     data: fileData.data, // base64
+    storageProvider: fileData.storageProvider || 'local',
+    storagePath: fileData.storagePath || null,
     goalId: fileData.goalId || null,
     createdAt: new Date().toISOString(),
   };
   files.unshift(file);
-  saveFiles(files);
-  return file;
+  const saved = saveFiles(files);
+  return saved ? file : null;
 }
 
 export function deleteFile(id) {

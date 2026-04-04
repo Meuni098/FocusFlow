@@ -1,12 +1,11 @@
 /** File Vault Page */
 import * as storage from '../services/storage.js';
+import * as fileStorage from '../services/file-storage.js';
 import { formatFileSize, formatRelativeDate, getFileTypeInfo, showToast, sanitizeFilename } from '../utils/helpers.js';
 
 let currentFolderId = null;
 let viewMode = 'grid';
 let searchQuery = '';
-const MAX_FILE_UPLOAD_MB = 15;
-const MAX_FILE_UPLOAD_BYTES = MAX_FILE_UPLOAD_MB * 1024 * 1024;
 
 export function renderFileVault() {
   const folders = storage.getFolders();
@@ -23,7 +22,8 @@ export function renderFileVault() {
 
   const currentFolder = currentFolderId ? folders.find(f => f.id === currentFolderId) : null;
   const usageMB = storage.getStorageUsageMB();
-  const usagePercent = 100;
+  const usagePercent = 0;
+  const storageStatus = fileStorage.getFileStorageStatus();
 
   const main = document.getElementById('main-content');
   main.innerHTML = `
@@ -101,7 +101,7 @@ export function renderFileVault() {
               ondrop="event.preventDefault(); this.classList.remove('drag-over'); window.handleVaultDrop(event);">
               <span class="drop-zone-icon" style="font-size: 40px;">☁️</span>
               <span style="font-size: 16px; font-weight: 500; margin-top: 8px;">Drop files to upload</span>
-              <span style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Max ${MAX_FILE_UPLOAD_MB}MB per file</span>
+              <span style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">No per-file limit in app</span>
             </div>
           ` : `
             <!-- Drop zone below files -->
@@ -121,8 +121,8 @@ export function renderFileVault() {
               <div class="vault-storage-fill" style="width: ${usagePercent}%"></div>
             </div>
             <span>${usageMB} MB used (unlimited total)</span>
-            <span style="color: var(--text-muted);">Per-file: ${MAX_FILE_UPLOAD_MB} MB</span>
-            <span style="font-weight: 600;">No cap</span>
+            <span style="color: var(--text-muted);">Mode: ${storageStatus.provider}</span>
+            <span style="font-weight: 600;">No file count cap</span>
           </div>
         </div>
       </div>
@@ -189,24 +189,52 @@ function handleFileDrop(fileList) {
   }
 }
 
-function processFileUpload(file) {
-  if (file.size > MAX_FILE_UPLOAD_BYTES) {
-    showToast(`${file.name} is too large (max ${MAX_FILE_UPLOAD_MB}MB)`, 'error');
-    return;
+async function processFileUpload(file) {
+  const safeName = sanitizeFilename(file.name);
+  const useCloudStorage = fileStorage.isCloudStorageConfigured();
+
+  try {
+    if (useCloudStorage) {
+      const uploaded = await fileStorage.uploadFileToCloud(file, safeName);
+      const savedFile = storage.addFile({
+        name: safeName,
+        type: file.type,
+        size: file.size,
+        data: uploaded.data,
+        storageProvider: uploaded.storageProvider,
+        storagePath: uploaded.storagePath,
+        folderId: currentFolderId,
+      });
+      if (!savedFile) {
+        await fileStorage.deleteCloudFile(uploaded);
+        showToast('Upload failed: browser storage is full. Delete some files and try again.', 'error');
+        return;
+      }
+      showToast(`${file.name} uploaded!`, 'success');
+      renderFileVault();
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const savedFile = storage.addFile({
+        name: safeName,
+        type: file.type,
+        size: file.size,
+        data: reader.result,
+        folderId: currentFolderId,
+      });
+      if (!savedFile) {
+        showToast('Upload failed: browser storage is full. Delete some files and try again.', 'error');
+        return;
+      }
+      showToast(`${file.name} uploaded!`, 'success');
+      renderFileVault();
+    };
+    reader.readAsDataURL(file);
+  } catch (error) {
+    showToast(`Upload failed: ${error.message || 'Unexpected error'}`, 'error');
   }
-  const reader = new FileReader();
-  reader.onload = () => {
-    storage.addFile({
-      name: sanitizeFilename(file.name),
-      type: file.type,
-      size: file.size,
-      data: reader.result,
-      folderId: currentFolderId,
-    });
-    showToast(`${file.name} uploaded!`, 'success');
-    renderFileVault();
-  };
-  reader.readAsDataURL(file);
 }
 
 // Global handlers
@@ -229,7 +257,9 @@ window.setVaultView = function(mode) {
 window.handleVaultUpload = function(input) {
   const files = input.files;
   if (!files) return;
-  for (const file of files) { processFileUpload(file); }
+  for (const file of files) {
+    processFileUpload(file);
+  }
   input.value = '';
 };
 
@@ -237,12 +267,20 @@ window.handleVaultDrop = function(event) {
   handleFileDrop(event.dataTransfer.files);
 };
 
-window.deleteFileById = function(id) {
-  if (confirm('Delete this file?')) {
-    storage.deleteFile(id);
-    showToast('File deleted', 'info');
-    renderFileVault();
+window.deleteFileById = async function(id) {
+  if (!confirm('Delete this file?')) return;
+
+  const file = storage.getFiles().find(f => f.id === id);
+  try {
+    await fileStorage.deleteCloudFile(file);
+  } catch (error) {
+    showToast(`Could not remove cloud file: ${error.message || 'Unexpected error'}`, 'error');
+    return;
   }
+
+  storage.deleteFile(id);
+  showToast('File deleted', 'info');
+  renderFileVault();
 };
 
 window.previewFile = function(id) {
