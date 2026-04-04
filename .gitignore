@@ -3,3 +3,4 @@ FocusFlow.env
 PROMPTS/
 node_modules
 dist
+.vercel
