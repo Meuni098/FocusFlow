@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Goal Details - FocusFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#e8e5ff",
+              "surface-tint": "#702ae1",
+              "primary": "#702ae1",
+              "on-tertiary": "#f0f2ff",
+              "inverse-on-surface": "#9c9ab4",
+              "primary-container": "#b28cff",
+              "surface-container-high": "#e2dfff",
+              "inverse-surface": "#0c0c1f",
+              "tertiary": "#0057bd",
+              "surface-variant": "#dbd9ff",
+              "primary-dim": "#6411d5",
+              "background": "#f8f5ff",
+              "tertiary-dim": "#004ca6",
+              "on-secondary": "#ffeff2",
+              "tertiary-fixed": "#8ab0ff",
+              "error-dim": "#a70138",
+              "outline-variant": "#acaac5",
+              "inverse-primary": "#a476ff",
+              "secondary": "#b00d6a",
+              "secondary-fixed": "#ffc1d6",
+              "secondary-dim": "#9d005d",
+              "primary-fixed-dim": "#a67aff",
+              "on-error-container": "#510017",
+              "on-surface": "#2d2d42",
+              "on-background": "#2d2d42",
+              "error": "#b41340",
+              "surface-container-low": "#f2efff",
+              "secondary-fixed-dim": "#ffaccb",
+              "error-container": "#f74b6d",
+              "surface": "#f8f5ff",
+              "on-primary-container": "#2e006c",
+              "surface-bright": "#f8f5ff",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#00163b",
+              "on-secondary-container": "#8e0054",
+              "on-secondary-fixed-variant": "#9e005e",
+              "on-primary": "#f8f0ff",
+              "tertiary-fixed-dim": "#73a2ff",
+              "on-surface-variant": "#5a5971",
+              "on-secondary-fixed": "#6b003e",
+              "surface-dim": "#d3d1f8",
+              "primary-fixed": "#b28cff",
+              "tertiary-container": "#8ab0ff",
+              "outline": "#75748d",
+              "surface-container-highest": "#dbd9ff",
+              "secondary-container": "#ffc1d6",
+              "on-tertiary-container": "#002e6a",
+              "on-primary-fixed": "#000000",
+              "on-error": "#ffefef",
+              "on-primary-fixed-variant": "#390083",
+              "on-tertiary-fixed-variant": "#00377b"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .savings-gradient { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .circular-progress {
+            background: conic-gradient(#10b981 169.2deg, #f2efff 0deg);
+        }
+    </style>
+</head>
+<body class="bg-[#FAFAF8] font-body text-on-surface antialiased">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-[260px] bg-slate-50 dark:bg-slate-900 flex flex-col py-6 px-5 border-r border-slate-200/50">
+<div class="mb-10 px-2">
+<span class="text-[22px] font-bold text-violet-600 dark:text-violet-400 font-['Space_Grotesk']">FocusFlow</span>
+<p class="text-[11px] font-medium uppercase tracking-wider text-slate-500 mt-1">Productivity Workspace</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<!-- ACTIVE TAB: Goals -->
+<a class="flex items-center gap-3 px-4 py-3 bg-violet-600/10 text-violet-600 border-l-4 border-violet-600 font-medium transition-colors rounded-r-xl" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="font-medium">Goals</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-medium">File Vault</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 space-y-4">
+<button class="w-full py-3 px-4 bg-violet-600 text-white rounded-xl font-semibold shadow-md shadow-violet-200 hover:scale-[0.98] transition-transform">
+                Upgrade Storage
+            </button>
+<div class="flex items-center gap-3 px-2 py-3 border-t border-slate-200/50">
+<span class="material-symbols-outlined text-slate-400">account_circle</span>
+<span class="text-sm font-medium text-slate-700">Eunice</span>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 h-16 w-[calc(100%-260px)] ml-[260px] px-8 bg-white/80 backdrop-blur-xl z-40 border-b border-slate-200/50 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-violet-600">ads_click</span>
+<h1 class="text-2xl font-bold font-headline text-slate-900 tracking-tight">Goals</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search goals..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 rounded-full transition-all">
+<span class="material-symbols-outlined text-slate-600">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-full transition-all">
+<span class="material-symbols-outlined text-slate-600">light_mode</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-slate-200">
+<img alt="Eunice Avatar" data-alt="minimalist 3d avatar of a professional woman with glasses and dark hair on a soft purple background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCroPppl62UECVCCRooKDeb9lCxIeZiYZKojov53nZcOV_fwDGlgjXfPIsv0h0fxB5agwAFMkBGNPbgRu_etMOc2Xl8U2SThhOKSrkFNT93iUa-NTSaH6o5z2iI-IOUtgq6zjojtijWoS332OdNlgGOfliSzahO5ZFzczuJRi1-iIQlxtg1zhL9AcV401UBYxjsppRHYOMau0XDTKpoT9XxfJGdqKNnLBpeKhSBeezZJPSINWY9Pjm6bCxLP_aRQtbHzAabzWSptDMw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] pt-24 pb-12 px-10 max-w-[1200px] mx-auto">
+<!-- Back Navigation -->
+<a class="inline-flex items-center gap-2 text-secondary font-medium text-sm mb-6 hover:translate-x-[-4px] transition-transform" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+            Back to Goals
+        </a>
+<!-- Goal Header Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm mb-8 border border-slate-100">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="text-[28px] font-bold font-headline text-slate-900 mb-3">Save for MacBook Pro</h2>
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-[12px] font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Savings
+                        </span>
+<span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-[12px] font-semibold">High Priority</span>
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[12px] font-semibold">Active</span>
+</div>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-slate-500">more_horiz</span>
+</button>
+</div>
+<p class="text-on-surface-variant max-w-2xl mb-6 leading-relaxed">
+                Saving up for the M4 MacBook Pro with 64GB Unified Memory and 2TB SSD. This is essential for my high-fidelity rendering work and video production.
+            </p>
+<div class="flex items-center gap-6 pt-6 border-t border-slate-50">
+<div class="flex items-center gap-2 text-slate-500 text-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-mono">Ends: Dec 24, 2024</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 text-sm">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>9 months left</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 text-sm">
+<span class="material-symbols-outlined text-[18px]">tag</span>
+<span>Work/Creative</span>
+</div>
+</div>
+</section>
+<!-- Progress & Stats Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+<!-- Left: Circular Progress -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-2xl p-8 flex flex-col items-center justify-center shadow-sm border border-slate-100">
+<div class="relative w-[200px] h-[200px]">
+<!-- Outer shadow ring -->
+<div class="absolute inset-0 rounded-full border-[14px] border-surface-container-low"></div>
+<!-- Actual Progress -->
+<div class="absolute inset-0 rounded-full circular-progress" style="mask-image: radial-gradient(transparent 58%, black 58.5%); -webkit-mask-image: radial-gradient(transparent 58%, black 58.5%);"></div>
+<!-- Center Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-bold font-headline text-emerald-600">47%</span>
+<span class="text-sm font-mono text-slate-500 mt-1">₱23,450</span>
+</div>
+</div>
+<p class="mt-6 text-sm font-medium text-slate-500 text-center uppercase tracking-widest">Target Reached</p>
+</div>
+<!-- Right: Stats Grid -->
+<div class="lg:col-span-7 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Current Balance</p>
+<p class="text-2xl font-mono font-bold text-slate-900">₱23,450</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Target Amount</p>
+<p class="text-2xl font-mono font-bold text-slate-900">₱50,000</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Remaining</p>
+<p class="text-2xl font-mono font-bold text-emerald-600">₱26,550</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Projected Completion</p>
+<p class="text-xl font-bold text-slate-900 font-headline">Oct 12, 2024</p>
+</div>
+</div>
+</div>
+<!-- Transaction Section -->
+<section class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm border border-slate-100 mb-8">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold font-headline text-slate-900">Transaction History</h3>
+<button class="inline-flex items-center gap-2 px-4 py-2 border border-emerald-500 text-emerald-600 rounded-xl text-sm font-semibold hover:bg-emerald-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Log Transaction
+                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-slate-400 text-xs uppercase tracking-widest border-b border-slate-50">
+<th class="pb-4 font-semibold">Date</th>
+<th class="pb-4 font-semibold">Type</th>
+<th class="pb-4 font-semibold text-right">Amount</th>
+<th class="pb-4 font-semibold pl-8">Note</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 font-mono text-slate-600">Mar 28, 2024</td>
+<td class="py-4">
+<span class="flex items-center gap-2 text-emerald-600 font-medium">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span> Deposit
+                                </span>
+</td>
+<td class="py-4 text-right font-mono font-bold text-slate-900">₱1,500.00</td>
+<td class="py-4 pl-8 text-slate-500">Weekly savings transfer</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 font-mono text-slate-600">Mar 22, 2024</td>
+<td class="py-4">
+<span class="flex items-center gap-2 text-emerald-600 font-medium">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span> Deposit
+                                </span>
+</td>
+<td class="py-4 text-right font-mono font-bold text-slate-900">₱2,000.00</td>
+<td class="py-4 pl-8 text-slate-500">Freelance bonus</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 font-mono text-slate-600">Mar 15, 2024</td>
+<td class="py-4">
+<span class="flex items-center gap-2 text-emerald-600 font-medium">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span> Deposit
+                                </span>
+</td>
+<td class="py-4 text-right font-mono font-bold text-slate-900">₱1,500.00</td>
+<td class="py-4 pl-8 text-slate-500">Weekly savings transfer</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 font-mono text-slate-600">Mar 10, 2024</td>
+<td class="py-4">
+<span class="flex items-center gap-2 text-error font-medium">
+<span class="material-symbols-outlined text-[18px]">arrow_downward</span> Withdrawal
+                                </span>
+</td>
+<td class="py-4 text-right font-mono font-bold text-error">₱450.00</td>
+<td class="py-4 pl-8 text-slate-500">Emergency peripheral repair</td>
+</tr>
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="py-4 font-mono text-slate-600">Mar 01, 2024</td>
+<td class="py-4">
+<span class="flex items-center gap-2 text-emerald-600 font-medium">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span> Deposit
+                                </span>
+</td>
+<td class="py-4 text-right font-mono font-bold text-slate-900">₱5,000.00</td>
+<td class="py-4 pl-8 text-slate-500">Initial monthly allocation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Attached Files Section -->
+<section class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm border border-slate-100">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold font-headline text-slate-900">Attached Files</h3>
+<button class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline">
+<span class="material-symbols-outlined text-[18px]">attach_file</span>
+                    Attach File
+                </button>
+</div>
+<div class="flex gap-4 mb-6">
+<!-- File Mini-cards -->
+<div class="w-[140px] p-3 bg-surface-container-low rounded-xl border border-slate-100 group cursor-pointer hover:border-primary/30 transition-all">
+<div class="h-20 bg-slate-200 rounded-lg mb-2 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="slick studio shot of a space gray macbook pro m4 on a light gray architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZOx0AfUu200341Fkzr2Z0CplWdOW8PGH8nxQJFgWBtfQKkOd74Nd3KTMsG_UNSAo2F7xQw61YQVQQtRKK0OfWn47s3veTd8Yhvhz-GXkcChk2H0rU0s6auUW01T-Ix5gu9P0ndwbSTnqeoTOxELgFcKwadlRsfvVkfEKFB_FKEODXXotjBxtmP-opZBiaJfCu-Vavf13plJlUw7fOQeiqs3FbkWWBpo8qvtuvacffK_UidcHVQrC0mqRzufhX6RLNXgQDWGZHaff1"/>
+</div>
+<p class="text-[11px] font-medium text-slate-700 truncate">spec_sheet.pdf</p>
+<p class="text-[9px] text-slate-400">1.2 MB</p>
+</div>
+<div class="w-[140px] p-3 bg-surface-container-low rounded-xl border border-slate-100 group cursor-pointer hover:border-primary/30 transition-all">
+<div class="h-20 bg-slate-200 rounded-lg mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 text-3xl">description</span>
+</div>
+<p class="text-[11px] font-medium text-slate-700 truncate">quote_apple.pdf</p>
+<p class="text-[9px] text-slate-400">450 KB</p>
+</div>
+<div class="w-[140px] p-3 bg-surface-container-low rounded-xl border border-slate-100 group cursor-pointer hover:border-primary/30 transition-all">
+<div class="h-20 bg-slate-200 rounded-lg mb-2 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="overhead view of a modern clean creative desk with stationery and soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqXuMtMkiUk5EGO_lZ7ESOnitusF5HeCaCoesMgL1DLaL537lCbydwOXFERZ4kee4gOGbxazyDUTFG5b6ejKPhHn44Bm6GdIRiZvHn9Y9hrIGGwF8FIRfIg2-dEl0KkcGWbnkjMFO4buKxuMmr7423XzUycN-Hu-W5PekE44Rf9bXRAf8-Cpt3RFnWX0Nax_n19HgN74uXFoV46uVD1iGC2VoYSonuGDAJnJBTFCkELnZp8BHwWW33Y7iDIRrRSG7RmVfYNcSFF7Eg"/>
+</div>
+<p class="text-[11px] font-medium text-slate-700 truncate">desk_setup_inspo.jpg</p>
+<p class="text-[9px] text-slate-400">2.8 MB</p>
+</div>
+</div>
+<!-- Drop Zone -->
+<div class="h-20 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center gap-3 bg-slate-50/50 hover:bg-white hover:border-primary/40 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-slate-400">upload_file</span>
+<p class="text-sm text-slate-400 font-medium">Drag files here to attach</p>
+</div>
+</section>
+</main>
+</body></html>

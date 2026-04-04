@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>File Vault - FocusFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-container": "#e8e5ff",
+                "surface-tint": "#702ae1",
+                "primary": "#702ae1",
+                "on-tertiary": "#f0f2ff",
+                "inverse-on-surface": "#9c9ab4",
+                "primary-container": "#b28cff",
+                "surface-container-high": "#e2dfff",
+                "inverse-surface": "#0c0c1f",
+                "tertiary": "#0057bd",
+                "surface-variant": "#dbd9ff",
+                "primary-dim": "#6411d5",
+                "background": "#f8f5ff",
+                "tertiary-dim": "#004ca6",
+                "on-secondary": "#ffeff2",
+                "tertiary-fixed": "#8ab0ff",
+                "error-dim": "#a70138",
+                "outline-variant": "#acaac5",
+                "inverse-primary": "#a476ff",
+                "secondary": "#b00d6a",
+                "secondary-fixed": "#ffc1d6",
+                "secondary-dim": "#9d005d",
+                "primary-fixed-dim": "#a67aff",
+                "on-error-container": "#510017",
+                "on-surface": "#2d2d42",
+                "on-background": "#2d2d42",
+                "error": "#b41340",
+                "surface-container-low": "#f2efff",
+                "secondary-fixed-dim": "#ffaccb",
+                "error-container": "#f74b6d",
+                "surface": "#f8f5ff",
+                "on-primary-container": "#2e006c",
+                "surface-bright": "#f8f5ff",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed": "#00163b",
+                "on-secondary-container": "#8e0054",
+                "on-secondary-fixed-variant": "#9e005e",
+                "on-primary": "#f8f0ff",
+                "tertiary-fixed-dim": "#73a2ff",
+                "on-surface-variant": "#5a5971",
+                "on-secondary-fixed": "#6b003e",
+                "surface-dim": "#d3d1f8",
+                "primary-fixed": "#b28cff",
+                "tertiary-container": "#8ab0ff",
+                "outline": "#75748d",
+                "surface-container-highest": "#dbd9ff",
+                "secondary-container": "#ffc1d6",
+                "on-tertiary-container": "#002e6a",
+                "on-primary-fixed": "#000000",
+                "on-error": "#ffefef",
+                "on-primary-fixed-variant": "#390083",
+                "on-tertiary-fixed-variant": "#00377b"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-screen w-[260px] bg-slate-50 dark:bg-slate-900 flex flex-col py-6 px-5 z-50">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">fluid</span>
+</div>
+<div>
+<h1 class="text-[22px] font-bold text-violet-600 dark:text-violet-400 font-['Space_Grotesk'] tracking-tight">FocusFlow</h1>
+<p class="text-[10px] font-medium uppercase tracking-wider text-slate-400">Productivity Workspace</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="text-sm font-medium">Goals</span>
+</a>
+<!-- Active State Logic: File Vault -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-violet-600/10 text-violet-600 dark:text-violet-400 border-l-4 border-violet-600 font-medium" href="#">
+<span class="material-symbols-outlined" data-weight="fill">inventory_2</span>
+<span class="text-sm font-medium">File Vault</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50 dark:border-slate-800/50">
+<div class="p-4 rounded-xl bg-violet-50 dark:bg-violet-900/20 mb-6">
+<p class="text-xs font-bold text-violet-700 dark:text-violet-300 mb-1">Upgrade Storage</p>
+<p class="text-[11px] text-slate-500 mb-3 leading-relaxed">Get 100GB of secure cloud vault storage.</p>
+<button class="w-full py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:opacity-90 transition-opacity">Go Pro</button>
+</div>
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-slate-200">
+<img alt="Eunice Avatar" class="w-full h-full object-cover" data-alt="portrait of a professional creative woman in a bright studio environment, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlJSaga5y2X67kxIAlFDngcZJrRq6pighLTx8LC3YoEYU8sK1S_915dufJPAUZ3cLZhCUrzklHIieElxpDHvEXrbUzMIxocYVRA2U41Fra3LecGxoOPXMuFY0p1hZOb_LdMI3QQN_9jBbDW_CAB5yJqsKY29KcUilncxxBtiwUIO1nZ62lDUlUrKaWWfJFZmzgkHxJQoqkMWHnnFMVdC90ACt-q4BgIRckytuu8aohfHn9CjaiNcwBvDisI8nR6aAZbdqOWw9580MG"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-50">Eunice</p>
+<p class="text-[11px] text-slate-500 uppercase tracking-widest">Premium User</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm flex justify-between items-center w-[calc(100%-260px)] ml-[260px] px-8">
+<div class="flex items-center gap-2">
+<span class="text-slate-400 text-sm font-medium">All Files</span>
+<span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-50 text-sm font-bold">Documents</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-[280px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="w-full h-10 bg-slate-100 dark:bg-slate-800 border-none rounded-full pl-10 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search in Vault..." type="text"/>
+</div>
+<div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="p-1.5 bg-white dark:bg-slate-700 shadow-sm rounded-md text-primary">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
+<span class="material-symbols-outlined text-[20px]">list</span>
+</button>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dim text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">upload</span>
+                Upload
+            </button>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="ml-[260px] pt-16 min-h-screen">
+<div class="flex h-[calc(100vh-64px)]">
+<!-- Left Panel: Folder Tree -->
+<div class="w-[240px] bg-surface-container-low p-6 flex flex-col gap-8">
+<div>
+<h3 class="text-[11px] font-medium uppercase tracking-wider text-outline mb-4">Library</h3>
+<ul class="space-y-1">
+<li>
+<button class="w-full flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">folder</span>
+                                Documents
+                            </button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">folder</span>
+                                Receipts
+                            </button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">folder</span>
+                                Work
+                            </button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">image</span>
+                                Images
+                            </button>
+</li>
+<li>
+<button class="w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                                Projects
+                            </button>
+</li>
+</ul>
+</div>
+<div class="mt-auto">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-bold text-on-surface-variant">STORAGE</span>
+<span class="font-['JetBrains_Mono'] text-[11px] font-bold text-primary">21%</span>
+</div>
+<div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden mb-3">
+<div class="h-full w-[21%] bg-gradient-to-r from-primary to-secondary"></div>
+</div>
+<p class="text-[11px] font-['JetBrains_Mono'] text-outline text-center">2.1 MB / 10 MB</p>
+</div>
+</div>
+<!-- Right Panel: File Grid -->
+<div class="flex-1 p-8 bg-surface-container-lowest overflow-y-auto relative">
+<!-- Drag & Drop Overlay -->
+<div class="absolute inset-8 rounded-2xl border-2 border-dashed border-primary/20 bg-primary/[0.03] pointer-events-none flex items-center justify-center">
+<div class="text-center opacity-0 group-hover:opacity-100">
+<!-- This would show on dragover in a real app -->
+</div>
+</div>
+<div class="max-w-[1100px] mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- File Card 1 (Image) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl overflow-hidden bg-slate-100">
+<img alt="Work Desk" class="w-full h-full object-cover" data-alt="overhead view of a clean minimalist desk with a laptop, plant, and notepad, soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8qQTv0OpkOr48_UrcGBTqsLLI8ZoJllG8T23V9pWDrggxDN77uRANKXSJdqVccYYj00INF_s5NfNZiG0qKz6I_OsV6Nwa7x4gS0ipdIs3sZSFJ2mMitCy_ApaxgKD1b6tx6kb8Xndm5QLEL1GU1IC23G-hGgCrSXZAcB4abMP2vJsr03J6N8tcNskcLToebvoNHMof3uDOP2a8VURp4eZsLGa_QmUJPSxjDg6HZGvUAR_d8nO5sh-gdeQHNOtZr77aNjasI5e6TIP"/>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">Office_Setup_Ref.jpg</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">JPG · 1.2 MB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-primary px-2 py-0.5 bg-primary/5 rounded-full">Reference</span>
+</div>
+</div>
+</div>
+<!-- File Card 2 (PDF) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl bg-red-50 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-red-200">picture_as_pdf</span>
+<span class="absolute top-3 right-3 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded">PDF</span>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">Q3_Planning_Strategy.pdf</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">PDF · 845 KB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-red-600 px-2 py-0.5 bg-red-50 rounded-full">Quarterly</span>
+</div>
+</div>
+</div>
+<!-- File Card 3 (Spreadsheet) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl bg-emerald-50 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-emerald-200">table_chart</span>
+<span class="absolute top-3 right-3 px-2 py-0.5 bg-emerald-500 text-white text-[10px] font-bold rounded">XLS</span>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">Budget_Forecast_2024.xlsx</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">XLS · 245 KB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-emerald-600 px-2 py-0.5 bg-emerald-50 rounded-full">Finance</span>
+</div>
+</div>
+</div>
+<!-- File Card 4 (Image) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl overflow-hidden bg-slate-100">
+<img alt="App Preview" class="w-full h-full object-cover" data-alt="close up of a digital interface on a tablet screen with vibrant purple and blue UI elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFh4OIDuJVCpFjqHrwoAMe3T5DqaN53TUr1wprPxOCZuDGbv13WMIEpix6zahdUGTzrAbaDdZlLSpqbe_uhwRVMggpWgov04ah-zf75q7EmR58Nqkx8VWi-J2b7kd1WOMfPjKCdFq-eGj2tCNay8EJcl2DpHRaxmPtFd0pvkvR-c-RuR_gy02IvDSznVwE0j2grki2EhWBLQeOJaYISD4AXJ9F24WzaavL03hlivA3dTeoVn_w5T-UpP5OIw6zjt1G7hDriHZX3Qzw"/>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">Mobile_App_Draft.png</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">PNG · 2.4 MB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-primary px-2 py-0.5 bg-primary/5 rounded-full">Design</span>
+</div>
+</div>
+</div>
+<!-- File Card 5 (PDF) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl bg-red-50 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-red-200">description</span>
+<span class="absolute top-3 right-3 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded">PDF</span>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">Employee_Handbook.pdf</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">PDF · 3.1 MB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full">Internal</span>
+</div>
+</div>
+</div>
+<!-- File Card 6 (Spreadsheet) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl bg-emerald-50 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-emerald-200">assessment</span>
+<span class="absolute top-3 right-3 px-2 py-0.5 bg-emerald-500 text-white text-[10px] font-bold rounded">XLS</span>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">User_Analytics_Data.csv</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">CSV · 45 KB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-emerald-600 px-2 py-0.5 bg-emerald-50 rounded-full">Metrics</span>
+</div>
+</div>
+</div>
+<!-- File Card 7 (Image) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl overflow-hidden bg-slate-100">
+<img alt="Team Meeting" class="w-full h-full object-cover" data-alt="a group of diverse professionals collaborating in a modern office with glass walls and warm interior lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtRLClORlTLm3rRkpe0eyMQa5acTqkQ3L2M2jJ93rlrEbkbK5UkPoh9s4KHfSVdHBcrItaoiZFpy9hgL3wQ_lEhCH-Qq60u6pml-zJ-Xbiui04QceHlGT82OjEaHGQsK54DW4ctXSOsmtsnXS3KF72m3zpS4hapAQUhXtZgXXITtTNa6_dog1HPaaLsqcwQMdMRPjpkwPOex09B1Vzqu2FArvW7bzj5mYLG_Odu7dN33wkAi1pwAMD0mHR6FHy2fme07ao7F5r5zz9"/>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">Workshop_Photo.jpg</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">JPG · 4.8 MB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-primary px-2 py-0.5 bg-primary/5 rounded-full">Marketing</span>
+</div>
+</div>
+</div>
+<!-- File Card 8 (PDF) -->
+<div class="group relative bg-white dark:bg-slate-900 rounded-xl border border-transparent hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border-2 border-primary/50 bg-white/80 backdrop-blur"></div>
+</div>
+<div class="aspect-video w-full rounded-t-xl bg-red-50 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-[48px] text-red-200">receipt_long</span>
+<span class="absolute top-3 right-3 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded">PDF</span>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-slate-900 truncate">Software_Invoice_Aug.pdf</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-['JetBrains_Mono'] text-slate-500">PDF · 112 KB</span>
+<span class="h-1 w-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-medium text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full">Invoices</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - FocusFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e8e5ff",
+                        "surface-tint": "#702ae1",
+                        "primary": "#702ae1",
+                        "on-tertiary": "#f0f2ff",
+                        "inverse-on-surface": "#9c9ab4",
+                        "primary-container": "#b28cff",
+                        "surface-container-high": "#e2dfff",
+                        "inverse-surface": "#0c0c1f",
+                        "tertiary": "#0057bd",
+                        "surface-variant": "#dbd9ff",
+                        "primary-dim": "#6411d5",
+                        "background": "#f8f5ff",
+                        "tertiary-dim": "#004ca6",
+                        "on-secondary": "#ffeff2",
+                        "tertiary-fixed": "#8ab0ff",
+                        "error-dim": "#a70138",
+                        "outline-variant": "#acaac5",
+                        "inverse-primary": "#a476ff",
+                        "secondary": "#b00d6a",
+                        "secondary-fixed": "#ffc1d6",
+                        "secondary-dim": "#9d005d",
+                        "primary-fixed-dim": "#a67aff",
+                        "on-error-container": "#510017",
+                        "on-surface": "#2d2d42",
+                        "on-background": "#2d2d42",
+                        "error": "#b41340",
+                        "surface-container-low": "#f2efff",
+                        "secondary-fixed-dim": "#ffaccb",
+                        "error-container": "#f74b6d",
+                        "surface": "#f8f5ff",
+                        "on-primary-container": "#2e006c",
+                        "surface-bright": "#f8f5ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#00163b",
+                        "on-secondary-container": "#8e0054",
+                        "on-secondary-fixed-variant": "#9e005e",
+                        "on-primary": "#f8f0ff",
+                        "tertiary-fixed-dim": "#73a2ff",
+                        "on-surface-variant": "#5a5971",
+                        "on-secondary-fixed": "#6b003e",
+                        "surface-dim": "#d3d1f8",
+                        "primary-fixed": "#b28cff",
+                        "tertiary-container": "#8ab0ff",
+                        "outline": "#75748d",
+                        "surface-container-highest": "#dbd9ff",
+                        "secondary-container": "#ffc1d6",
+                        "on-tertiary-container": "#002e6a",
+                        "on-primary-fixed": "#000000",
+                        "on-error": "#ffefef",
+                        "on-primary-fixed-variant": "#390083",
+                        "on-tertiary-fixed-variant": "#00377b"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "12px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        .glass { background: rgba(248, 245, 255, 0.8); backdrop-filter: blur(20px); }
+        .mono-data { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-background text-on-surface flex min-h-screen">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-[260px] bg-slate-50 dark:bg-slate-900 flex flex-col py-6 px-5 z-50">
+<div class="mb-10 px-2">
+<h1 class="text-[22px] font-bold text-violet-600 dark:text-violet-400 font-['Space_Grotesk'] tracking-tight">FocusFlow</h1>
+<p class="text-[11px] font-medium uppercase tracking-wider text-slate-500 mt-1">Productivity Workspace</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors rounded-xl group scale-95 duration-200 transition-transform" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors rounded-xl group scale-95 duration-200 transition-transform" href="#">
+<span class="material-symbols-outlined text-[22px]">ads_click</span>
+<span class="font-medium">Goals</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors rounded-xl group scale-95 duration-200 transition-transform" href="#">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+<span class="font-medium">File Vault</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-violet-600/10 text-violet-600 dark:text-violet-400 border-l-4 border-violet-600 font-medium rounded-r-xl transition-all scale-95 duration-200 transition-transform" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-xl font-medium shadow-sm hover:opacity-90 transition-opacity text-sm">
+                Upgrade Storage
+            </button>
+<div class="flex items-center gap-3 px-2 py-3 border-t border-slate-200/50 pt-6">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">
+                    EC
+                </div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Eunice</p>
+<p class="text-xs text-on-surface-variant">eunice@flow.io</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm flex justify-between items-center w-[calc(100%-260px)] ml-[260px] px-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50 font-['Space_Grotesk']">Settings</h2>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all active:scale-90 transition-transform relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">light_mode</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/30 mx-2"></div>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 hover:brightness-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Quick Add
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] mt-16 flex-1 px-8 py-12 flex flex-col items-center">
+<div class="w-full max-w-[640px] space-y-10">
+<!-- Section 1: Appearance -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">palette</span>
+<h3 class="text-[20px] font-semibold text-on-surface font-['Space_Grotesk']">Appearance</h3>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<!-- Light Theme (Active) -->
+<button class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surface-container-lowest border-2 border-primary shadow-[0_0_15px_rgba(112,42,225,0.15)] transition-all">
+<div class="w-full aspect-video bg-white rounded-lg border border-outline-variant/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">light_mode</span>
+</div>
+<span class="font-medium text-sm text-primary">Light</span>
+</button>
+<!-- Dark Theme -->
+<button class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-all group">
+<div class="w-full aspect-video bg-slate-900 rounded-lg border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors text-3xl">dark_mode</span>
+</div>
+<span class="font-medium text-sm text-on-surface-variant group-hover:text-primary transition-colors">Dark</span>
+</button>
+<!-- System Theme -->
+<button class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-all group">
+<div class="w-full aspect-video bg-gradient-to-br from-white to-slate-900 rounded-lg border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors text-3xl">desktop_windows</span>
+</div>
+<span class="font-medium text-sm text-on-surface-variant group-hover:text-primary transition-colors">System</span>
+</button>
+</div>
+</section>
+<!-- Section 2: Data Management -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">database</span>
+<h3 class="text-[20px] font-semibold text-on-surface font-['Space_Grotesk']">Data Management</h3>
+</div>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden divide-y divide-outline-variant/10">
+<!-- Export Row -->
+<div class="flex items-center justify-between p-6">
+<div>
+<h4 class="font-semibold text-on-surface">Export Workspace</h4>
+<p class="text-sm text-on-surface-variant mt-1">Download your tasks, goals, and vault files as a .zip</p>
+</div>
+<button class="px-5 py-2 rounded-xl border border-outline text-on-surface font-medium text-sm hover:bg-surface-container-high transition-colors">
+                            Export
+                        </button>
+</div>
+<!-- Import Row -->
+<div class="flex items-center justify-between p-6">
+<div>
+<h4 class="font-semibold text-on-surface">Import Data</h4>
+<p class="text-sm text-on-surface-variant mt-1">Migrate tasks from CSV or JSON backups</p>
+</div>
+<button class="px-5 py-2 rounded-xl border border-outline text-on-surface font-medium text-sm hover:bg-surface-container-high transition-colors">
+                            Import
+                        </button>
+</div>
+<!-- Danger Zone -->
+<div class="p-6 border-l-4 border-error bg-error-container/10">
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-semibold text-error">Danger Zone</h4>
+<p class="text-sm text-on-error-container mt-1">Permanently delete your workspace and all files</p>
+</div>
+<button class="px-5 py-2 bg-error text-on-error rounded-xl font-bold text-sm hover:brightness-90 transition-all shadow-md shadow-error/20">
+                                Clear Everything
+                            </button>
+</div>
+<button class="mt-4 text-xs font-bold text-secondary-dim hover:underline uppercase tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">warning</span>
+                            Clear All Data
+                        </button>
+</div>
+</div>
+</section>
+<!-- Section 3: About -->
+<section class="space-y-6 pb-20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<h3 class="text-[20px] font-semibold text-on-surface font-['Space_Grotesk']">About</h3>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-outline-variant/10 text-center space-y-4">
+<div class="w-20 h-20 bg-primary-container/20 rounded-3xl mx-auto flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">all_inclusive</span>
+</div>
+<div class="space-y-1">
+<p class="mono-data text-lg font-bold text-on-surface">FocusFlow v1.0.0</p>
+<p class="text-on-surface-variant font-medium">Built with heart by Eunice</p>
+</div>
+<div class="flex justify-center gap-4 pt-4">
+<a class="text-xs text-primary font-semibold hover:underline" href="#">Privacy Policy</a>
+<span class="text-outline-variant text-xs">•</span>
+<a class="text-xs text-primary font-semibold hover:underline" href="#">Terms of Service</a>
+<span class="text-outline-variant text-xs">•</span>
+<a class="text-xs text-primary font-semibold hover:underline" href="#">Changelog</a>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/10">
+<img class="w-full h-20 object-cover rounded-xl opacity-40 grayscale" data-alt="minimalist abstract composition of soft violet geometric shapes floating on off-white background modern digital art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI7qGSATKblKSQR_Wj0bpOKMTtAfqb0NcSZxLQ8X6qKNetM-vfQCPFaOeSvkhGvD-OtigXAn1-FF4cKZasTY9_4YzzJbTrqbCIg53sCH8PA1vKQh1pu4KBEIHTfXIXMgAE77G0kcUXn7XgsvM-4zPHBtCX58wd7ZSShFStIbIQD7luzH9KtfVabv8h4B7IptAa6MBSWswS8dgvTuXuDPNh_7oWgRR9bgVcn7ghmm8wp8KznGLuR_gaLOvHY5k9b5boegXPf5annb7f"/>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

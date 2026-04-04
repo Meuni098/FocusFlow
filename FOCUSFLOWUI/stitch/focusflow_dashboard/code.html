@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FocusFlow Dashboard | Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-container": "#e8e5ff",
+                "surface-tint": "#702ae1",
+                "primary": "#702ae1",
+                "on-tertiary": "#f0f2ff",
+                "inverse-on-surface": "#9c9ab4",
+                "primary-container": "#b28cff",
+                "surface-container-high": "#e2dfff",
+                "inverse-surface": "#0c0c1f",
+                "tertiary": "#0057bd",
+                "surface-variant": "#dbd9ff",
+                "primary-dim": "#6411d5",
+                "background": "#f8f5ff",
+                "tertiary-dim": "#004ca6",
+                "on-secondary": "#ffeff2",
+                "tertiary-fixed": "#8ab0ff",
+                "error-dim": "#a70138",
+                "outline-variant": "#acaac5",
+                "inverse-primary": "#a476ff",
+                "secondary": "#b00d6a",
+                "secondary-fixed": "#ffc1d6",
+                "secondary-dim": "#9d005d",
+                "primary-fixed-dim": "#a67aff",
+                "on-error-container": "#510017",
+                "on-surface": "#2d2d42",
+                "on-background": "#2d2d42",
+                "error": "#b41340",
+                "surface-container-low": "#f2efff",
+                "secondary-fixed-dim": "#ffaccb",
+                "error-container": "#f74b6d",
+                "surface": "#f8f5ff",
+                "on-primary-container": "#2e006c",
+                "surface-bright": "#f8f5ff",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed": "#00163b",
+                "on-secondary-container": "#8e0054",
+                "on-secondary-fixed-variant": "#9e005e",
+                "on-primary": "#f8f0ff",
+                "tertiary-fixed-dim": "#73a2ff",
+                "on-surface-variant": "#5a5971",
+                "on-secondary-fixed": "#6b003e",
+                "surface-dim": "#d3d1f8",
+                "primary-fixed": "#b28cff",
+                "tertiary-container": "#8ab0ff",
+                "outline": "#75748d",
+                "surface-container-highest": "#dbd9ff",
+                "secondary-container": "#ffc1d6",
+                "on-tertiary-container": "#002e6a",
+                "on-primary-fixed": "#000000",
+                "on-error": "#ffefef",
+                "on-primary-fixed-variant": "#390083",
+                "on-tertiary-fixed-variant": "#00377b"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"],
+                "mono": ["JetBrains Mono"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .bg-glass {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .lift-hover {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+        }
+        .lift-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(112, 42, 225, 0.15);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- Sidebar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-[260px] bg-slate-50 dark:bg-slate-900 flex flex-col h-full py-6 px-5 z-50">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<h1 class="text-[22px] font-bold text-violet-600 dark:text-violet-400 font-['Space_Grotesk'] leading-none">FocusFlow</h1>
+<p class="text-[11px] font-medium uppercase tracking-wider text-on-surface-variant opacity-70 mt-1">Productivity Workspace</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 bg-violet-600/10 text-violet-600 dark:text-violet-400 border-l-4 border-violet-600 font-medium group transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors rounded-r-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="ads_click">ads_click</span>
+<span class="text-sm">Goals</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors rounded-r-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-sm">File Vault</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors rounded-r-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full py-3 px-4 bg-gradient-to-tr from-primary to-primary-container text-on-primary rounded-xl font-medium text-sm shadow-md shadow-primary/20 hover:opacity-90 transition-opacity">
+                Upgrade Storage
+            </button>
+<div class="flex items-center gap-3 px-2 pt-4 border-t border-slate-200/50">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up portrait of a young professional woman with a friendly smile, clean studio lighting, modern tech minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNkApjKdrXiz3n9OB8Ny9WsRe6yiovqPYXLwUMLg1Gd3qyiL5P1ASXIs0L_Qc9VgDIB8gppH1lYg8rK-dZPz_VQ8iT6SBuPfa8sMMWNvJ5SKKcqKykg7bi4-MG-f3jUoUkpyWGXsugvd6c6QTB1mB_3heZq-kk0FZIwL_5S6SzhuwTHP1-67EDDNF6C5a3ocuMaNikQnZ6546n-q4UV0xfYE-DzIlMHX00cK29TTPy3Cx_2I_tIRDNXKu5_oZgRQy_wpJWD2bR3G0A"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate text-on-surface">Eunice</p>
+<p class="text-[10px] text-on-surface-variant truncate">Premium Account</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">more_vert</span>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 h-16 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 flex justify-between items-center w-[calc(100%-260px)] ml-[260px] px-8 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/50" placeholder="Search goals, files, or tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="light_mode">light_mode</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all text-on-surface-variant relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="ml-2 px-5 py-2 bg-primary/10 text-primary font-semibold rounded-full hover:bg-primary/20 transition-all text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span>
+                Quick Add
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] pt-24 pb-12 px-8 min-h-screen max-w-[1400px]">
+<!-- Greeting Section -->
+<section class="mb-10">
+<h2 class="font-headline font-bold text-[32px] text-on-surface tracking-tight">Good morning, Eunice</h2>
+<p class="font-body text-[15px] text-on-surface-variant mt-1">You have <span class="text-secondary font-semibold">3 active goals</span> and <span class="text-secondary font-semibold">2 approaching deadlines</span>.</p>
+</section>
+<!-- Stats Row -->
+<div class="grid grid-cols-4 gap-6 mb-10">
+<div class="bg-surface-container-lowest p-6 rounded-2xl lift-hover flex flex-col justify-between h-[140px]">
+<div class="flex justify-between items-start">
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-medium">Active Goals</span>
+<span class="material-symbols-outlined text-emerald-500">trending_up</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline font-bold text-[36px] text-on-surface">5</span>
+<span class="text-emerald-500 font-mono text-sm font-bold">+2</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl lift-hover flex flex-col justify-between h-[140px]">
+<div class="flex justify-between items-start">
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-medium">Completed</span>
+<span class="material-symbols-outlined text-emerald-500" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="font-headline font-bold text-[36px] text-on-surface">12</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl lift-hover flex flex-col justify-between h-[140px]">
+<div class="flex justify-between items-start">
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-medium">Total Savings</span>
+<span class="material-symbols-outlined text-primary">auto_graph</span>
+</div>
+<div class="font-mono font-medium text-[28px] text-primary">₱23,450</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl lift-hover flex flex-col justify-between h-[140px]">
+<div class="flex justify-between items-start">
+<span class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-medium">Files</span>
+<span class="material-symbols-outlined text-sky-400" style="font-variation-settings: 'FILL' 1;">folder</span>
+</div>
+<div class="font-headline font-bold text-[36px] text-on-surface">34</div>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Active Goals -->
+<div class="col-span-12 lg:col-span-8">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline font-semibold text-xl text-on-surface">Active Goals</h3>
+<button class="text-primary text-sm font-medium hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Goal 1: Savings -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl lift-hover border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 px-2 py-0.5 rounded-full">Savings</span>
+</div>
+<span class="text-[10px] font-bold text-emerald-500 uppercase">High Priority</span>
+</div>
+<h4 class="font-semibold text-on-surface mb-1">Save for MacBook Pro</h4>
+<p class="text-xs text-on-surface-variant mb-4 font-mono">₱23,450 / ₱50,000</p>
+<div class="w-full h-2 bg-surface-container-low rounded-full mb-3 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" style="width: 47%"></div>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-on-surface-variant">47% Complete</span>
+<span class="text-on-surface-variant font-medium">14 days left</span>
+</div>
+</div>
+<!-- Goal 2: Habit -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl lift-hover border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-sky-500"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-600 px-2 py-0.5 rounded-full">Habit</span>
+</div>
+</div>
+<h4 class="font-semibold text-on-surface mb-1">Read 30 mins daily</h4>
+<p class="text-xs text-on-surface-variant mb-4 font-mono">22/30 day streak</p>
+<div class="w-full h-2 bg-surface-container-low rounded-full mb-3 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-sky-400 to-sky-600 rounded-full" style="width: 73%"></div>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-on-surface-variant">73% Consistency</span>
+<span class="text-emerald-500 font-bold">On Track</span>
+</div>
+</div>
+<!-- Goal 3: Milestone -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl lift-hover border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-violet-500"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider bg-violet-500/10 text-violet-600 px-2 py-0.5 rounded-full">Milestone</span>
+</div>
+</div>
+<h4 class="font-semibold text-on-surface mb-1">Complete Portfolio Site</h4>
+<p class="text-xs text-on-surface-variant mb-4 font-mono">3 / 5 tasks done</p>
+<div class="w-full h-2 bg-surface-container-low rounded-full mb-3 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-violet-400 to-violet-600 rounded-full" style="width: 60%"></div>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-on-surface-variant">60% Complete</span>
+<span class="text-on-surface-variant">Due in 5 days</span>
+</div>
+</div>
+<!-- Goal 4: Project -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl lift-hover border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider bg-orange-500/10 text-orange-600 px-2 py-0.5 rounded-full">Project</span>
+</div>
+</div>
+<h4 class="font-semibold text-on-surface mb-1">Learn TypeScript</h4>
+<p class="text-xs text-on-surface-variant mb-4 font-mono">Manual progress log</p>
+<div class="w-full h-2 bg-surface-container-low rounded-full mb-3 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-orange-400 to-orange-600 rounded-full" style="width: 35%"></div>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<span class="text-on-surface-variant">35% Complete</span>
+<span class="text-on-surface-variant">Updated yesterday</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Savings Widget -->
+<div class="col-span-12 lg:col-span-4">
+<div class="bg-surface-container-lowest p-8 rounded-3xl h-full flex flex-col">
+<h3 class="font-headline font-semibold text-xl text-on-surface mb-8">Savings Overview</h3>
+<div class="flex flex-col items-center justify-center mb-8">
+<div class="relative w-40 h-40">
+<!-- Circular Progress -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-low" cx="80" cy="80" fill="transparent" r="74" stroke="currentColor" stroke-width="12"></circle>
+<circle cx="80" cy="80" fill="transparent" r="74" stroke="url(#savingsGradient)" stroke-dasharray="465" stroke-dashoffset="246" stroke-linecap="round" stroke-width="12"></circle>
+<defs>
+<lineargradient id="savingsGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#702ae1;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#b00d6a;stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-headline font-bold text-2xl text-on-surface leading-none">47%</span>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold mt-1">Goal Fill</span>
+</div>
+</div>
+<div class="mt-6 text-center">
+<p class="text-lg font-mono font-medium text-primary">₱23,450</p>
+<p class="text-xs text-on-surface-variant">saved of ₱50,000 target</p>
+</div>
+</div>
+<div class="flex-1">
+<p class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant mb-4">Recent Activity</p>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined text-sm">add</span>
+</div>
+<p class="text-sm font-medium text-on-surface">Freelance payment</p>
+</div>
+<span class="text-sm font-mono font-medium text-emerald-600">+₱5,000</span>
+</div>
+<div class="flex items-center justify-between opacity-70">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined text-sm">add</span>
+</div>
+<p class="text-sm font-medium text-on-surface">Monthly Deposit</p>
+</div>
+<span class="text-sm font-mono font-medium text-emerald-600">+₱2,000</span>
+</div>
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-sm">remove</span>
+</div>
+<p class="text-sm font-medium text-on-surface">Digital Assets</p>
+</div>
+<span class="text-sm font-mono font-medium text-secondary">-₱1,200</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 border-2 border-primary/20 text-primary rounded-xl font-semibold text-sm hover:bg-primary/5 transition-all">
+                        Log Transaction
+                    </button>
+</div>
+</div>
+<!-- Bottom Section: Recent Files -->
+<div class="col-span-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline font-semibold text-xl text-on-surface">Recent Files</h3>
+<button class="text-primary text-sm font-medium hover:underline">File Vault</button>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-4 hide-scrollbar">
+<!-- File 1 -->
+<div class="flex-shrink-0 w-[180px] bg-surface-container-lowest p-3 rounded-2xl lift-hover">
+<div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-3 overflow-hidden relative group">
+<img class="w-full h-full object-cover" data-alt="scanned digital receipt with crisp text and professional layout, soft overhead office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASLFInbRIhsOJ3zp2ryFxZuJ5SvjXBiVGO0dQ1IZ348IwUf0Wbk8pYL9Nzdb17DXz9Tzx4oV1rQ4UdLg8sUJFV0tI1Rye21ARjIsWmpJDV6mhDstXP4hhF4-fTzJxI1h3dtUF77gtFT-KZ1UFY-pgB2Afif8LN7mXTfFpKV37VHpDxWxKJyUyexW8j5qwEK6KsFn1vDTj_9N-5pXqiajiRJkM5m5vBvpKiFKH_efwNpP-XKEEVJBkushdxNdPgeVNzc87oJgBnFCu1"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+</div>
+<p class="text-xs font-semibold truncate text-on-surface">receipt_march.pdf</p>
+<p class="text-[10px] text-on-surface-variant mt-1 font-mono">245 KB · 2 days ago</p>
+</div>
+<!-- File 2 -->
+<div class="flex-shrink-0 w-[180px] bg-surface-container-lowest p-3 rounded-2xl lift-hover">
+<div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-3 overflow-hidden relative group">
+<img class="w-full h-full object-cover" data-alt="close up of a professional project plan document with diagrams and charts, clean minimal design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDazsKjQXsWQp8TV-GDdlllLXDtBL7zJXXXNx3r7jrMndpLxEtLonwrUuqgaRShL-RrO9tBYKD0FVI_FOrpIBPriQP1-vMTeQLKm4FftOBnk8IE8lNtzjY097vX8K7kOpypax1NL3qJvaStS-xZkaaeNjGlvQMH07lpz0RUcHF4_q_AgGLp9NPqElvR6z5i809EvedmS-JCCxTYrqHUPRrhJ26Q96a_hK5ImQvVwYRpIsrcXxfWGI8NKN5Cn0TqGvU370_vApBtXOFo"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+</div>
+<p class="text-xs font-semibold truncate text-on-surface">project_brief_v2.docx</p>
+<p class="text-[10px] text-on-surface-variant mt-1 font-mono">1.2 MB · 3 days ago</p>
+</div>
+<!-- File 3 -->
+<div class="flex-shrink-0 w-[180px] bg-surface-container-lowest p-3 rounded-2xl lift-hover">
+<div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-3 overflow-hidden relative group flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-sky-400" style="font-variation-settings: 'FILL' 1;">image</span>
+</div>
+<p class="text-xs font-semibold truncate text-on-surface">hero_shot_final.png</p>
+<p class="text-[10px] text-on-surface-variant mt-1 font-mono">4.5 MB · 5 days ago</p>
+</div>
+<!-- File 4 -->
+<div class="flex-shrink-0 w-[180px] bg-surface-container-lowest p-3 rounded-2xl lift-hover">
+<div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-3 overflow-hidden relative group flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-orange-400" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<p class="text-xs font-semibold truncate text-on-surface">tax_filing_2023.pdf</p>
+<p class="text-[10px] text-on-surface-variant mt-1 font-mono">890 KB · 1 week ago</p>
+</div>
+<!-- File 5 -->
+<div class="flex-shrink-0 w-[180px] bg-surface-container-lowest p-3 rounded-2xl lift-hover">
+<div class="aspect-[4/3] rounded-xl bg-surface-container-low mb-3 overflow-hidden relative group">
+<img class="w-full h-full object-cover" data-alt="screenshot of high quality clean source code in a dark mode IDE, syntax highlighting in purple and blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkp8bfBwDlLbmCmGXXpLzAiYuVxM0KDrDW7WPWO_Sm4c1X9Be6hmBtvW21RAG8afXpTrIzv8zboj6uim3Ax8_Ig-t7rLAC55YNaa5OD6MokR-RH2qURVVt01Jfqx37XL9vaC7NSomNrH1rbcCSGyyf7SHaH_0hRSo2-BbOu_cQSh946UClgkRSOuVDtteXOpWI5-vMyUzHiFROY-CxqhdLuu8dD38XCC7MxDu73Gn9RdwKDco2585aULGvCpxmV0_cxlzIEzeHkQfC"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+</div>
+<p class="text-xs font-semibold truncate text-on-surface">utils_refactor.ts</p>
+<p class="text-[10px] text-on-surface-variant mt-1 font-mono">12 KB · 2 weeks ago</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
